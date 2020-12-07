@@ -30,10 +30,11 @@ namespace WebServices
             //referenciando o contexto que ira ser usado
             services.AddDbContext<DataContext>(
                 //como o configurations acessa o app setings chama a string de conexão padrão
-                context => context.UseSqlite(Configuration.GetConnectionString("Default"))
-                
-                );
+                context => context.UseSqlite(Configuration.GetConnectionString("Default")));
 
+           //services.AddSingleton<IRepository, Repository>();
+           //services.AddTransient<IRepository, Repository>();
+           services.AddScoped<IRepository, Repository>();
             services.AddControllers();
         }
 
